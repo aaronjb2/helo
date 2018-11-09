@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 class Nav extends Component {
     constructor(props){
@@ -25,9 +26,18 @@ class Nav extends Component {
         }
         return(
             <div>
+                <p>Account Holder: </p>
+                <p>Account Number:</p>
+                <p>Account username: </p>
                 Nav<button onClick={()=>this.goHome()}>Home</button><button onClick={()=>this.goToPost()}>New Post</button><button onClick={()=>this.goToAuth()}>Logout</button>
             </div>
         )
     }
 }
-export default withRouter(Nav);
+
+function mapStateToProps(state) {
+    console.log('redux store state: ', state);
+    return state;
+}
+
+export default connect(mapStateToProps)(withRouter(Nav));
